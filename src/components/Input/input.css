@@ -1,0 +1,27 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input {
+  border: 1px solid black;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+input.error {
+  border-color: red;
+}
+
+.input-container .error-text {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 8px;
+}

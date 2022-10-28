@@ -1,0 +1,24 @@
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+button {
+  background-color: rgb(68, 160, 68);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  padding: 12px 20px;
+}
+
+button:hover {
+  background-color: rgb(112, 198, 112);
+}
+
+button:active {
+  background-color: rgb(68, 160, 68);
+}
