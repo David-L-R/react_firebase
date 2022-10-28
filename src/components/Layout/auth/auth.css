@@ -6,6 +6,10 @@
   border-radius: 8px;
 }
 
+.form-container h1 {
+  text-align: center;
+}
+
 button {
   background-color: rgb(68, 160, 68);
   border: none;

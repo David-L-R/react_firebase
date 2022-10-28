@@ -1,0 +1,23 @@
+.alert {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(204, 204, 204, 0.6);
+  border: 1px solid rgb(204, 204, 204);
+  color: #333;
+  border-radius: 8px;
+}
+
+.alert.success {
+  background-color: rgba(105, 214, 105, 0.6);
+  background-color: rgb(105, 214, 105);
+}
+
+.alert.error {
+  background-color: rgba(255, 17, 0, 0.6);
+  background-color: rgb(255, 17, 0);
+}
+
+.alert.warning {
+  background-color: rgba(254, 235, 68, 0.629);
+  background-color: rgb(254, 235, 68);
+}
