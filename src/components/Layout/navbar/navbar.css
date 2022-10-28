@@ -1,0 +1,47 @@
+nav {
+  height: 80px;
+  grid-area: nav;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 3;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    box-shadow: none;
+  }
+
+  nav h1 {
+    font-size: 85%;
+  }
+}
+
+.persona {
+  display: flex;
+  align-items: center;
+}
+
+.persona img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+nav a {
+  color: #333;
+}
+
+.cart:hover {
+  color: gray;
+}
+
+.cart:active {
+  color: lightgray;
+}

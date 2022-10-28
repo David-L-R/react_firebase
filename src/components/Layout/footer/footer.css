@@ -1,0 +1,18 @@
+footer {
+  grid-area: footer;
+  height: 80px;
+  background-color: white;
+  box-shadow: 8px 0px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}

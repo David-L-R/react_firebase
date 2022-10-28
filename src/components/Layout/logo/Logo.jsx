@@ -1,5 +1,9 @@
 import "./logo.css";
 
-export const Logo = () => {
-  return <div className='logo'>📝 LogYourBlog</div>;
+export const Logo = ({ className, ...props }) => {
+  return (
+    <div className={`logo ${className}`} {...props}>
+      📝 LogYourBlog
+    </div>
+  );
 };

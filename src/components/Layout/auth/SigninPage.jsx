@@ -49,7 +49,7 @@ export const SigninPage = () => {
 
   return (
     <CenteredPage>
-      <Logo />
+      <Logo className='absolute' />
       <div className='form-container'>
         <h1>Login</h1>
         {!user && serverError && (

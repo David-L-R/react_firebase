@@ -58,7 +58,7 @@ export const SignupPage = () => {
 
   return (
     <CenteredPage>
-      <Logo />
+      <Logo className='absolute' />
       <div className='form-container'>
         <h1>Sign Up</h1>
         {!user && serverError && (

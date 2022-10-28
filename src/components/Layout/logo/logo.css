@@ -1,8 +1,11 @@
 .logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
   font-size: 20px;
   color: #000080;
   font-weight: 700;
+}
+
+.absolute {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
