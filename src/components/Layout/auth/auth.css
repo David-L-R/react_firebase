@@ -11,18 +11,34 @@
 }
 
 button {
-  background-color: rgb(68, 160, 68);
   border: none;
   outline: none;
-  cursor: pointer;
-  color: white;
   padding: 12px 20px;
+  cursor: pointer;
 }
 
-button:hover {
+button.success {
+  background-color: rgb(68, 160, 68);
+  color: white;
+}
+
+button.success:hover {
   background-color: rgb(112, 198, 112);
 }
 
-button:active {
+button.success:active {
   background-color: rgb(68, 160, 68);
+}
+
+button.error {
+  background-color: rgb(160, 68, 68);
+  color: white;
+}
+
+button.error:hover {
+  background-color: rgb(212, 103, 103);
+}
+
+button.error:active {
+  background-color: rgb(160, 68, 68);
 }

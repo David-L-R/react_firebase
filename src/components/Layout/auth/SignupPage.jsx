@@ -87,7 +87,9 @@ export const SignupPage = () => {
               >
                 Password
               </Input>
-              <button type='submit'>Submit</button>
+              <button className='success' type='submit'>
+                Submit
+              </button>
             </Form>
             <p>
               Already have an account? <Link to='/login'>Login</Link>

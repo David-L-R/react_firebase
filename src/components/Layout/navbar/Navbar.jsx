@@ -8,8 +8,12 @@ export const Navbar = () => {
   return (
     <nav>
       <Logo />
-      <div>{user && <p>{user.email}</p>}</div>
-      <button onClick={signout}>Logout</button>
+      <div class='persona'>
+        {user && <p>{user.email}</p>}{" "}
+        <button className='error' onClick={signout}>
+          Logout
+        </button>
+      </div>
     </nav>
   );
 };

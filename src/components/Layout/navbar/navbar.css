@@ -11,6 +11,11 @@ nav {
   z-index: 3;
 }
 
+.persona {
+  display: flex;
+  gap: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   nav {
     box-shadow: none;
