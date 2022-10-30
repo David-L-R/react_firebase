@@ -1,5 +1,9 @@
-import { auth } from "../firebase";
+import { auth } from "../utils/firebase";
 const { createContext, useContext, useState, useEffect } = require("react");
+const {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} = require("../utils/firebase");
 
 const AuthContext = createContext();
 
@@ -11,11 +15,13 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
 
   const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    // return auth.signInWithEmailAndPassword(email, password);
+    // return createUserWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const signout = () => {

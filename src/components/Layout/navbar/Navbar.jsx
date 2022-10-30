@@ -8,7 +8,7 @@ export const Navbar = () => {
   return (
     <nav>
       <Logo />
-      <div class='persona'>
+      <div className='persona'>
         {user && <p>{user.email}</p>}{" "}
         <button className='error' onClick={signout}>
           Logout

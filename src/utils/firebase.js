@@ -1,5 +1,10 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -10,9 +15,10 @@ const config = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-const app = firebase.initializeApp(config);
-const auth = firebase.auth();
+const app = initializeApp(config);
+const auth = getAuth();
+const db = getFirestore();
 
 export default app;
 
-export { auth };
+export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, db };
