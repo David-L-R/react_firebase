@@ -13,7 +13,6 @@ import { AuthProvider } from "./context/AuthContext";
 const router = createBrowserRouter([
   {
     path: "/",
-    exact: true,
     element: <App />,
   },
   {

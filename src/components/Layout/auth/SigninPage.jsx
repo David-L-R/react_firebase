@@ -4,6 +4,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { Alert } from "../../alert/Alert";
 import { Form } from "../../Form/Form";
 import { Input } from "../../Input/Input";
+import { Loader } from "../../loader/Loader";
 import { Logo } from "../logo/Logo";
 import { CenteredPage } from "../pages/CenteredPage";
 import "./auth.css";
@@ -13,7 +14,7 @@ export const SigninPage = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  // const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login, user } = useAuth();
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ export const SigninPage = () => {
                 id='password'
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                error={passwordError}
+                // error={passwordError}
               >
                 Password
               </Input>
@@ -87,7 +88,7 @@ export const SigninPage = () => {
             </p>
           </>
         ) : (
-          <div>loading</div>
+          <Loader />
         )}
       </div>
     </CenteredPage>

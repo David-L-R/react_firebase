@@ -15,6 +15,8 @@ const App = () => {
     }
   }, [user]);
 
+  if (!user) return null;
+
   return (
     <div className='App'>
       <Navbar />

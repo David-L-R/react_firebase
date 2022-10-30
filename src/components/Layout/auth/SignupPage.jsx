@@ -4,6 +4,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { Alert } from "../../alert/Alert";
 import { Form } from "../../Form/Form";
 import { Input } from "../../Input/Input";
+import { Loader } from "../../loader/Loader";
 import { Logo } from "../logo/Logo";
 import { CenteredPage } from "../pages/CenteredPage";
 import "./auth.css";
@@ -96,7 +97,7 @@ export const SignupPage = () => {
             </p>
           </>
         ) : (
-          <div>loading</div>
+          <Loader />
         )}
       </div>
     </CenteredPage>
