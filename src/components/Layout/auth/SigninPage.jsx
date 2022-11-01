@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { Alert } from "../../alert/Alert";
+import { Button } from "../../button/Button";
 import { Form } from "../../Form/Form";
 import { Input } from "../../Input/Input";
 import { Loader } from "../../loader/Loader";
@@ -79,9 +80,9 @@ export const SigninPage = () => {
               >
                 Password
               </Input>
-              <button className='success' type='submit'>
+              <Button className='success' type='submit'>
                 Submit
-              </button>
+              </Button>
             </Form>
             <p>
               Already have an account? <Link to='/signup'>Signup</Link>

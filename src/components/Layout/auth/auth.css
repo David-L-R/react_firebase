@@ -9,36 +9,3 @@
 .form-container h1 {
   text-align: center;
 }
-
-button {
-  border: none;
-  outline: none;
-  padding: 12px 20px;
-  cursor: pointer;
-}
-
-button.success {
-  background-color: rgb(68, 160, 68);
-  color: white;
-}
-
-button.success:hover {
-  background-color: rgb(112, 198, 112);
-}
-
-button.success:active {
-  background-color: rgb(68, 160, 68);
-}
-
-button.error {
-  background-color: rgb(160, 68, 68);
-  color: white;
-}
-
-button.error:hover {
-  background-color: rgb(212, 103, 103);
-}
-
-button.error:active {
-  background-color: rgb(160, 68, 68);
-}
