@@ -1,0 +1,18 @@
+.main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-container h1 {
+  text-align: center;
+}

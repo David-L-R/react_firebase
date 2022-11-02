@@ -4,18 +4,18 @@ import "./App.css";
 import { Footer } from "./components/Layout/footer/Footer";
 import { Navbar } from "./components/Layout/navbar/Navbar";
 import { useAuth } from "./context/AuthContext";
-import { useBlog } from "./context/BlogContext";
+import { usePost } from "./context/PostContext";
 
 const App = () => {
-  const { user } = useAuth();
-  const { getAllBlogs } = useBlog();
+  const { user, loading } = useAuth();
+  const { getAllPosts } = usePost();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!user & !loading) {
       navigate("/signup");
     }
-  }, [user]);
+  }, [user, loading, navigate]);
 
   if (!user) return null;
 
@@ -23,7 +23,8 @@ const App = () => {
     <div className='App'>
       <Navbar />
       <div>
-        <button onClick={getAllBlogs}>Fetch Database</button>
+        <h1>Home</h1>
+        {/* <button onClick={getAllBlogs}>Fetch Database</button> */}
       </div>
       <Footer />
     </div>

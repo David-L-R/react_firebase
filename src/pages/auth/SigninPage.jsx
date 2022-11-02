@@ -1,41 +1,34 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context/AuthContext";
-import { Alert } from "../../alert/Alert";
-import { Button } from "../../button/Button";
-import { Form } from "../../Form/Form";
-import { Input } from "../../Input/Input";
-import { Loader } from "../../loader/Loader";
-import { Logo } from "../logo/Logo";
-import { CenteredPage } from "../pages/CenteredPage";
+import { useAuth } from "../../context/AuthContext";
+import { Alert } from "../../components/alert/Alert";
+import { Button } from "../../components/button/Button";
+import { Form } from "../../components/Form/Form";
+import { Input } from "../../components/Input/Input";
+import { Loader } from "../../components/loader/Loader";
+import { Logo } from "../../components/Layout/logo/Logo";
+import { CenteredPage } from "../../components/Layout/centeredPage/CenteredPage";
 import "./auth.css";
 
-export const SignupPage = () => {
+export const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  // const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signup, user } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
-    if (password.length < 6) {
-      setPasswordError("Password must be longer than 6 characters");
-      return;
-    }
-
     try {
       setLoading(true);
-      await signup(email, password);
+      await login(email, password);
       setSuccess(true);
       setLoading(false);
     } catch (err) {
       console.log(err);
       setServerError(err.message);
-      setEmail("");
-      setPassword("");
       setLoading(false);
     }
   };
@@ -49,10 +42,8 @@ export const SignupPage = () => {
     return (
       <CenteredPage>
         <div className='form-container'>
-          <h1>Sign Up</h1>
-          <Alert className='success'>
-            User {user.email} was successfully registered
-          </Alert>
+          <h1>Login</h1>
+          <Alert className='success'>Welcome back {user.email}</Alert>
         </div>
       </CenteredPage>
     );
@@ -62,7 +53,7 @@ export const SignupPage = () => {
     <CenteredPage>
       <Logo className='absolute' />
       <div className='form-container'>
-        <h1>Sign Up</h1>
+        <h1>Login</h1>
         {!user && serverError && (
           <Alert style={{ marginBottom: "8px" }} className='warning'>
             {serverError}
@@ -85,7 +76,7 @@ export const SignupPage = () => {
                 id='password'
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                error={passwordError}
+                // error={passwordError}
               >
                 Password
               </Input>
@@ -94,7 +85,7 @@ export const SignupPage = () => {
               </Button>
             </Form>
             <p>
-              Already have an account? <Link to='/login'>Login</Link>
+              Already have an account? <Link to='/signup'>Signup</Link>
             </p>
           </>
         ) : (

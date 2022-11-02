@@ -6,10 +6,11 @@ import App from "./App";
 // REACT ROUTER
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { SignupPage } from "./components/Layout/auth/SignupPage";
-import { SigninPage } from "./components/Layout/auth/SigninPage";
+import { SignupPage } from "./pages/auth/SignupPage";
+import { SigninPage } from "./pages/auth/SigninPage";
 import { AuthProvider } from "./context/AuthContext";
-import { BlogProvider } from "./context/BlogContext";
+import { PostProvider } from "./context/PostContext";
+import CreatePost from "./pages/post/CreatePost";
 
 const router = createBrowserRouter([
   {
@@ -24,15 +25,19 @@ const router = createBrowserRouter([
     path: "/login",
     element: <SigninPage />,
   },
+  {
+    path: "/create",
+    element: <CreatePost />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <BlogProvider>
+      <PostProvider>
         <RouterProvider router={router} />
-      </BlogProvider>
+      </PostProvider>
     </AuthProvider>
   </React.StrictMode>
 );

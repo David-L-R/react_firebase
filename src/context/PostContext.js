@@ -1,16 +1,16 @@
 import { db } from "../utils/firebase";
 const { createContext, useContext, useState, useEffect } = require("react");
 
-const BlogContext = createContext();
+const PostContext = createContext();
 
-const useBlog = () => {
-  return useContext(BlogContext);
+const usePost = () => {
+  return useContext(PostContext);
 };
 
-const BlogProvider = ({ children }) => {
-  // get all blogs
+const PostProvider = ({ children }) => {
+  // get all Posts
 
-  const getAllBlogs = () => {
+  const getAllPosts = () => {
     db.collection("blogs")
       // .where("capital", "==", true)
       .get()
@@ -42,10 +42,10 @@ const BlogProvider = ({ children }) => {
   // }, []);
 
   const value = {
-    getAllBlogs,
+    getAllPosts,
   };
 
-  return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
+  return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };
 
-export { BlogProvider, useBlog };
+export { PostProvider, usePost };

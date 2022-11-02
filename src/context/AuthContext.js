@@ -13,23 +13,33 @@ const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const signup = async (email, password) => {
+    setLoading(true);
+    await createUserWithEmailAndPassword(auth, email, password);
+    setLoading(false);
   };
 
-  const login = (email, password) => {
+  const login = async (email, password) => {
     // return auth.signInWithEmailAndPassword(email, password);
     // return createUserWithEmailAndPassword(auth, email, password);
-    return signInWithEmailAndPassword(auth, email, password);
+    setLoading(true);
+    await signInWithEmailAndPassword(auth, email, password);
+    setLoading(false);
   };
 
-  const signout = () => {
-    return auth.signOut();
+  const signout = async () => {
+    setLoading(true);
+    await auth.signOut();
+    setLoading(false);
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => setUser(user));
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setLoading(false);
+      setUser(user);
+    });
 
     return () => {
       unsubscribe();
@@ -41,6 +51,7 @@ const AuthProvider = ({ children }) => {
     signup,
     login,
     signout,
+    loading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
