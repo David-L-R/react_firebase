@@ -1,5 +1,6 @@
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../utils/firebase";
-const { createContext, useContext, useState, useEffect } = require("react");
+const { createContext, useContext } = require("react");
 
 const PostContext = createContext();
 
@@ -9,25 +10,25 @@ const usePost = () => {
 
 const PostProvider = ({ children }) => {
   // get all Posts
+  // const [user, loading] = useAuth();
 
-  const getAllPosts = () => {
-    db.collection("blogs")
-      // .where("capital", "==", true)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-        });
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-  };
+  const getAllPosts = () => {};
 
   // get user's blogs
 
-  // add a blog
+  // add a post
+  const addPost = async (post, userUid) => {
+    const collectionRef = collection(db, "posts");
+    try {
+      return await addDoc(collectionRef, {
+        ...post,
+        timeStamp: serverTimestamp(),
+        user: userUid,
+      });
+    } catch (err) {
+      throw new Error(JSON.stringify(err));
+    }
+  };
 
   // edit a blog
 
@@ -43,6 +44,7 @@ const PostProvider = ({ children }) => {
 
   const value = {
     getAllPosts,
+    addPost,
   };
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;

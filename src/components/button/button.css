@@ -2,7 +2,12 @@ button {
   border: none;
   outline: none;
   padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+button:focus {
+  outline: red 2px solid;
 }
 
 button.success {
@@ -37,4 +42,17 @@ button.error:active {
     cursor: pointer;
     font-size: 12px;
   }
+}
+
+button:disabled {
+  background-color: lightgray;
+  cursor: unset;
+}
+
+button:disabled:hover {
+  background-color: lightgray;
+}
+
+button:disabled:active {
+  background-color: lightgray;
 }

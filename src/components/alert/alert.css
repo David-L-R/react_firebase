@@ -9,15 +9,12 @@
 
 .alert.success {
   background-color: rgba(105, 214, 105, 0.6);
-  background-color: rgb(105, 214, 105);
 }
 
 .alert.error {
   background-color: rgba(255, 17, 0, 0.6);
-  background-color: rgb(255, 17, 0);
 }
 
 .alert.warning {
   background-color: rgba(254, 235, 68, 0.629);
-  background-color: rgb(254, 235, 68);
 }
