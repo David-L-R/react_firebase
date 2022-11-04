@@ -7,7 +7,16 @@ button {
 }
 
 button:focus {
-  outline: red 2px solid;
+  outline: blueviolet 2px solid;
+}
+
+button:hover {
+  background-color: rgb(53, 53, 53);
+  color: white;
+}
+
+button:active {
+  background-color: rgb(91, 91, 91);
 }
 
 button.success {

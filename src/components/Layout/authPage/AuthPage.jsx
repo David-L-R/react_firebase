@@ -18,7 +18,7 @@ const AuthPage = ({ children }) => {
   if (!user) return null;
 
   return (
-    <div className='App'>
+    <div className='page'>
       <Navbar />
       <div className='main'>{children}</div>
       <Footer />

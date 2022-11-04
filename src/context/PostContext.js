@@ -1,6 +1,12 @@
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "../utils/firebase";
-const { createContext, useContext } = require("react");
+const { createContext, useContext, useState, useEffect } = require("react");
 
 const PostContext = createContext();
 
@@ -9,10 +15,24 @@ const usePost = () => {
 };
 
 const PostProvider = ({ children }) => {
-  // get all Posts
-  // const [user, loading] = useAuth();
+  const [posts, setPosts] = useState([]);
 
-  const getAllPosts = () => {};
+  const getPosts = async () => {
+    const collectionRef = collection(db, "posts");
+    try {
+      const docsSnap = await getDocs(collectionRef, orderBy("timeStamp"));
+      const docs = [];
+      docsSnap.forEach((doc) => {
+        docs.push({
+          ...doc.data(),
+          date: new Date(doc.data().timeStamp.seconds * 1000),
+        });
+      });
+      setPosts(docs);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // get user's blogs
 
@@ -43,8 +63,9 @@ const PostProvider = ({ children }) => {
   // }, []);
 
   const value = {
-    getAllPosts,
+    getPosts,
     addPost,
+    posts,
   };
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
