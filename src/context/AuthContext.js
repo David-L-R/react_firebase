@@ -1,4 +1,11 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
 import { auth, db } from "../utils/firebase";
 const { createContext, useContext, useState, useEffect } = require("react");
 const {
@@ -19,16 +26,30 @@ const AuthProvider = ({ children }) => {
 
   const signup = async (email, password) => {
     setLoading(true);
-    await createUserWithEmailAndPassword(auth, email, password);
+    const user = await createUserWithEmailAndPassword(auth, email, password);
     setLoading(false);
+    console.log(user);
+    console.log(user.user.uid);
+    return user.user.uid;
   };
 
   const login = async (email, password) => {
-    // return auth.signInWithEmailAndPassword(email, password);
-    // return createUserWithEmailAndPassword(auth, email, password);
     setLoading(true);
     await signInWithEmailAndPassword(auth, email, password);
     setLoading(false);
+  };
+
+  const addUserInfo = async (user) => {
+    const collectionRef = collection(db, "users");
+    console.log(user);
+    try {
+      await addDoc(collectionRef, {
+        ...user,
+        timestamp: serverTimestamp(),
+      });
+    } catch (err) {
+      throw new Error(JSON.stringify(err));
+    }
   };
 
   const signout = async () => {
@@ -61,6 +82,7 @@ const AuthProvider = ({ children }) => {
   const value = {
     user,
     userInfo,
+    addUserInfo,
     signup,
     login,
     signout,

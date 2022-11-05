@@ -11,16 +11,17 @@ import { CenteredPage } from "../../components/Layout/centeredPage/CenteredPage"
 import "./auth.css";
 
 export const SignupPage = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signup, user } = useAuth();
+  const { signup, user, addUserInfo } = useAuth();
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
+  const onSubmit = async () => {
     if (password.length < 6) {
       setPasswordError("Password must be longer than 6 characters");
       return;
@@ -28,7 +29,8 @@ export const SignupPage = () => {
 
     try {
       setLoading(true);
-      await signup(email, password);
+      const id = await signup(email, password);
+      await addUserInfo({ name, id });
       setSuccess(true);
       setLoading(false);
     } catch (err) {
@@ -73,8 +75,19 @@ export const SignupPage = () => {
           <>
             <Form onSubmit={onSubmit}>
               <Input
+                type='name'
+                id='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                error='Your user name will be visible to all users'
+              >
+                Name
+              </Input>
+              <Input
                 type='email'
                 id='email'
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               >
@@ -83,6 +96,7 @@ export const SignupPage = () => {
               <Input
                 type='password'
                 id='password'
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 error={passwordError}
