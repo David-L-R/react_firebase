@@ -14,6 +14,7 @@ nav {
 .persona {
   display: flex;
   gap: 20px;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 600px) {

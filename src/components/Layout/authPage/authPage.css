@@ -28,3 +28,7 @@
   padding: 20px;
   overflow-y: scroll;
 }
+
+.main.center {
+  justify-content: center;
+}

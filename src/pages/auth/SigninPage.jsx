@@ -27,7 +27,7 @@ export const SigninPage = () => {
       setSuccess(true);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setServerError(err.message);
       setLoading(false);
     }

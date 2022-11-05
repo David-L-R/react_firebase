@@ -44,7 +44,7 @@ const CreatePost = () => {
   if (!user) return null;
 
   return (
-    <AuthPage>
+    <AuthPage className='center'>
       <div className='form-container'>
         {loading ? (
           <Loader />

@@ -4,16 +4,24 @@ import { usePost } from "./context/PostContext";
 import AuthPage from "./components/Layout/authPage/AuthPage";
 import { Loader } from "./components/loader/Loader";
 import { Post } from "./components/post/Post";
+import { useNavigation } from "react-router-dom";
 
 const Posts = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const { getPosts, posts } = usePost();
+  const navigate = useNavigation();
 
   useEffect(() => {
     getPosts();
   }, []);
 
-  if (!user) return null;
+  useEffect(() => {
+    if (!user && !loading) {
+      navigate("/signup");
+    }
+  }, [user, loading, navigate]);
+
+  if (!user && loading) return <Loader />;
 
   if (!posts || posts.length === 0)
     return (
@@ -25,7 +33,7 @@ const Posts = () => {
   return (
     <AuthPage>
       {posts.map((post) => (
-        <Post post={post} user={user} />
+        <Post post={post} user={user} key={post.uid} />
       ))}
     </AuthPage>
   );

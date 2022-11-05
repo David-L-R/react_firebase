@@ -1,4 +1,5 @@
-import { auth } from "../utils/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth, db } from "../utils/firebase";
 const { createContext, useContext, useState, useEffect } = require("react");
 const {
   createUserWithEmailAndPassword,
@@ -13,6 +14,7 @@ const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [userInfo, setUserInfo] = useState();
   const [loading, setLoading] = useState(true);
 
   const signup = async (email, password) => {
@@ -35,9 +37,19 @@ const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getUserInfo = async (user) => {
+    const colRef = collection(db, "users");
+    const q = query(colRef, where("id", "==", user.uid));
+    const snapShot = await getDocs(q);
+    const docs = snapShot.docs.map((doc) => doc.data());
+    const [userInfo] = docs;
+    setUserInfo({ name: userInfo.name });
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setLoading(false);
+      getUserInfo(user);
       setUser(user);
     });
 
@@ -48,6 +60,7 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     user,
+    userInfo,
     signup,
     login,
     signout,

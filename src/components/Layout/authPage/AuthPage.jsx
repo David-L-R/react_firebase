@@ -5,7 +5,7 @@ import { Footer } from "../footer/Footer";
 import { Navbar } from "../navbar/Navbar";
 import { useAuth } from "../../../context/AuthContext";
 
-const AuthPage = ({ children }) => {
+const AuthPage = ({ children, className }) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const AuthPage = ({ children }) => {
   return (
     <div className='page'>
       <Navbar />
-      <div className='main'>{children}</div>
+      <div className={`main ${className}`}>{children}</div>
       <Footer />
     </div>
   );

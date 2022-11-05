@@ -1,23 +1,22 @@
 import "./post.css";
 import { Button } from "../button/Button";
+import Avatar from "boring-avatars";
+import { getDate } from "../../utils/getdate";
 
 export const Post = ({ post, user }) => {
-  const day =
-    post.date.getDate() < 10 ? "0" + post.date.getDate() : post.date.getDate();
-  const month =
-    post.date.getMonth() + 1 < 10
-      ? "0" + (post.date.getMonth() + 1)
-      : post.date.getMonth() + 1;
-
-  console.log(user);
-  console.log(post);
+  const { day, month, year } = getDate(post.date);
 
   return (
     <div className='post-card'>
-      <p>{post.description}</p>
-      <h3>user: {post.user}</h3>
-      <p>{`${day}/${month}/${post.date.getFullYear()}`}</p>
-      {user.uid === post.user && (
+      <header>
+        <div className='avatar'>
+          <Avatar size='20px' name={post.user.name} variant='beam' />
+          <p>{post.user.name}</p>
+        </div>
+        <p className='date'>{`${day}/${month}/${year}`}</p>
+      </header>
+      <p className='description'>{post.description}</p>
+      {user.uid === post.user.id && (
         <div className='button-container'>
           <Button>Edit</Button>
           <Button className='error'>Delete</Button>

@@ -1,11 +1,14 @@
 import Avatar from "boring-avatars";
+import { Link } from "react-router-dom";
 import { colorPallete } from "../../../constants/colorPallete";
 import { useAuth } from "../../../context/AuthContext";
-import { Logo } from "../logo/Logo";
+import { Button } from "../../button/Button";
 import "./navbar.css";
 
 export const Navbar = () => {
-  const { user, signout } = useAuth();
+  const { user, signout, userInfo } = useAuth();
+
+  console.log(userInfo);
 
   return (
     <nav>
@@ -16,11 +19,15 @@ export const Navbar = () => {
           variant='beam'
           colors={colorPallete}
         />
-        {user && <p>{user.email}</p>}
+        {userInfo && <p>{userInfo.name}</p>}
       </div>
-      <button className='error' onClick={signout}>
-        Logout
-      </button>
+      <div>
+        <Link to='/'>Home</Link>
+        <Link to='/create'>Create</Link>
+        <Button className='error' onClick={signout}>
+          Logout
+        </Button>
+      </div>
     </nav>
   );
 };
