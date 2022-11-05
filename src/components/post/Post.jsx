@@ -2,6 +2,7 @@ import "./post.css";
 import { Button } from "../button/Button";
 import Avatar from "boring-avatars";
 import { getDate } from "../../utils/getdate";
+import { colorPallete } from "../../constants/colorPallete";
 
 export const Post = ({ post, user }) => {
   const { day, month, year } = getDate(post.date);
@@ -10,7 +11,12 @@ export const Post = ({ post, user }) => {
     <div className='post-card'>
       <header>
         <div className='avatar'>
-          <Avatar size='20px' name={post.user.name} variant='beam' />
+          <Avatar
+            size='20px'
+            name={post.user.name}
+            colors={colorPallete}
+            variant='beam'
+          />
           <p>{post.user.name}</p>
         </div>
         <p className='date'>{`${day}/${month}/${year}`}</p>

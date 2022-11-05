@@ -8,8 +8,6 @@ import "./navbar.css";
 export const Navbar = () => {
   const { user, signout, userInfo } = useAuth();
 
-  console.log(userInfo);
-
   return (
     <nav>
       <div className='persona'>
