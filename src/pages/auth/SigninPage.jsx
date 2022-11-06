@@ -44,6 +44,9 @@ export const SigninPage = () => {
         <div className='form-container'>
           <h1>Login</h1>
           <Alert className='success'>Welcome back {user.email}</Alert>
+          <div className='loader-container'>
+            <Loader />
+          </div>
         </div>
       </CenteredPage>
     );

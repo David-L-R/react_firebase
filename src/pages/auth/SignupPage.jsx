@@ -55,6 +55,9 @@ export const SignupPage = () => {
           <Alert className='success'>
             User {user.email} was successfully registered
           </Alert>
+          <div className='loader-container'>
+            <Loader />
+          </div>
         </div>
       </CenteredPage>
     );

@@ -1,17 +1,17 @@
 import {
-  doc,
   addDoc,
   collection,
-  getDoc,
   getDocs,
   orderBy,
   serverTimestamp,
   where,
   query,
-  documentId,
+  setDoc,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../utils/firebase";
-const { createContext, useContext, useState, useEffect } = require("react");
+const { createContext, useContext, useState } = require("react");
 
 const PostContext = createContext();
 
@@ -33,6 +33,7 @@ const PostProvider = ({ children }) => {
       docsSnap.forEach(async (doc) => {
         docs.push({
           ...doc.data(),
+          id: doc.id,
           date: new Date(doc.data().timeStamp.seconds * 1000),
         });
       });
@@ -80,14 +81,38 @@ const PostProvider = ({ children }) => {
     }
   };
 
-  // edit a blog
+  // get post by id
+  const getPostById = async (id) => {
+    const colRef = collection(db, "posts");
+    const q = query(colRef, where("__name__", "==", id));
+    const snapShot = await getDocs(q);
+    const docs = snapShot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    const [post] = docs;
 
-  // remove a blog
+    return post;
+  };
+
+  // edit a post
+
+  const editPost = async (post) => {
+    const docRef = doc(db, "posts", post.id);
+    await setDoc(docRef, { ...post });
+  };
+
+  // remove a post
+  const removePost = async (id) => {
+    const docRef = doc(db, "posts", id);
+    await deleteDoc(docRef);
+    getPosts();
+  };
 
   const value = {
     getPosts,
     addPost,
     getPostUser,
+    getPostById,
+    editPost,
+    removePost,
     posts,
   };
 

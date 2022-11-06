@@ -65,3 +65,73 @@ button:disabled:hover {
 button:disabled:active {
   background-color: lightgray;
 }
+
+a.link-button {
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+}
+
+a.link-button:focus {
+  outline: blueviolet 2px solid;
+}
+
+a.link-button:hover {
+  background-color: rgb(53, 53, 53);
+  color: white;
+}
+
+a.link-button:active {
+  background-color: rgb(91, 91, 91);
+}
+
+a.success {
+  background-color: rgb(68, 160, 68);
+  color: white;
+}
+
+a.success:hover {
+  background-color: rgb(112, 198, 112);
+}
+
+a.success:active {
+  background-color: rgb(68, 160, 68);
+}
+
+a.error {
+  background-color: rgb(160, 68, 68);
+  color: white;
+}
+
+a.error:hover {
+  background-color: rgb(212, 103, 103);
+}
+
+a.error:active {
+  background-color: rgb(160, 68, 68);
+}
+
+@media only screen and (max-width: 600px) {
+  a.link-button {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+}
+
+a.link-button:disabled {
+  background-color: lightgray;
+  cursor: unset;
+}
+
+a.link-button:disabled:hover {
+  background-color: lightgray;
+}
+
+a.link-button:disabled:active {
+  background-color: lightgray;
+}

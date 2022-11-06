@@ -28,8 +28,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     const user = await createUserWithEmailAndPassword(auth, email, password);
     setLoading(false);
-    console.log(user);
-    console.log(user.user.uid);
     return user.user.uid;
   };
 
@@ -41,7 +39,6 @@ const AuthProvider = ({ children }) => {
 
   const addUserInfo = async (user) => {
     const collectionRef = collection(db, "users");
-    console.log(user);
     try {
       await addDoc(collectionRef, {
         ...user,

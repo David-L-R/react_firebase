@@ -9,3 +9,8 @@
 .form-container h1 {
   text-align: center;
 }
+
+.form-container .loader-container {
+  height: 200px;
+  width: 100%;
+}

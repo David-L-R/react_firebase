@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAuth } from "./context/AuthContext";
-import { usePost } from "./context/PostContext";
-import AuthPage from "./components/Layout/authPage/AuthPage";
-import { Loader } from "./components/loader/Loader";
-import { Post } from "./components/post/Post";
+import { useAuth } from "../context/AuthContext";
+import { usePost } from "../context/PostContext";
+import AuthPage from "../components/Layout/authPage/AuthPage";
+import { Loader } from "../components/loader/Loader";
+import { Post } from "../components/post/Post";
 import { useNavigation } from "react-router-dom";
 
 const Posts = () => {

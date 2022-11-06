@@ -17,6 +17,15 @@ nav {
   font-size: 14px;
 }
 
+nav a {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 600px) {
   nav {
     box-shadow: none;
