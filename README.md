@@ -1,1 +1,1 @@
-# Tweeter Replica
+# Practice: connecting react and firebase
