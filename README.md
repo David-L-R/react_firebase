@@ -1,1 +1,7 @@
-# Practice: connecting react and firebase
+# CREATE REACT APP 
+
+
+```
+npm run start
+
+```
